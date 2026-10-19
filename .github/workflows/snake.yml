@@ -19,8 +19,8 @@ jobs:
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/galaga-contribution-graph.svg?game=galaga&palette=github-light
-            dist/galaga-contribution-graph-dark.svg?game=galaga&palette=github-dark
+            dist/pacman-contribution-graph.svg?game=pacman&palette=github-light
+            dist/pacman-contribution-graph-dark.svg?game=pacman&palette=github-dark
 
       - name: Publish to pacman-output branch
         uses: peaceiris/actions-gh-pages@v4
