@@ -1,0 +1,31 @@
+name: Generate Galaga Graph
+
+on:
+  schedule:
+    - cron: "0 */12 * * *" # every 12 hours
+  workflow_dispatch: # lets you run it manually from the Actions tab
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Generate galaga graph
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/galaga-contribution-graph.svg?game=galaga&palette=github-light
+            dist/galaga-contribution-graph-dark.svg?game=galaga&palette=github-dark
+
+      - name: Publish to pacman-output branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: pacman-output
+          force_orphan: true
