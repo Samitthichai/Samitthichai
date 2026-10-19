@@ -1,9 +1,9 @@
-name: Generate Galaga Graph
+name: Generate Pacman Graph
 
 on:
   schedule:
-    - cron: "0 */12 * * *" # every 12 hours
-  workflow_dispatch: # lets you run it manually from the Actions tab
+    - cron: "0 */12 * * *"
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -14,7 +14,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Generate galaga graph
+      - name: Generate pacman graph
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
