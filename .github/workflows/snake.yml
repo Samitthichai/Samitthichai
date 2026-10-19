@@ -1,4 +1,4 @@
-name: Generate Pacman Graph
+name: Generate Snake Graph
 
 on:
   schedule:
@@ -14,13 +14,13 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Generate pacman graph
+      - name: Generate snake graph
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/pacman-contribution-graph.svg?game=pacman&palette=github-light
-            dist/pacman-contribution-graph-dark.svg?game=pacman&palette=github-dark
+            dist/snake.svg?palette=github-light
+            dist/snake-dark.svg?palette=github-dark
 
       - name: Publish to pacman-output branch
         uses: peaceiris/actions-gh-pages@v4
